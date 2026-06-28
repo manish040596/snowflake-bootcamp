@@ -1,0 +1,52 @@
+How to load data from s3 to snowflake using IAM role 
+
+CREATE OR REPLACE TABLE CUSTOMER_RAW (
+    CUSTOMER_ID NUMBER,
+    CUSTOMER_NAME STRING,
+    EMAIL STRING,
+    CITY STRING
+);
+
+s3://company-data/customers/
+
+
+Step 3: Create File Format
+CREATE OR REPLACE FILE FORMAT CSV_FORMAT
+TYPE = CSV
+FIELD_DELIMITER = ','
+SKIP_HEADER = 0;
+
+
+Step 4: Create Storage Integration
+
+CREATE OR REPLACE STORAGE INTEGRATION S3_INT
+TYPE = EXTERNAL_STAGE
+STORAGE_PROVIDER = S3
+ENABLED = TRUE
+STORAGE_AWS_ROLE_ARN = 'arn:aws:iam::123456789012:role/snowflake_s3_role'
+STORAGE_ALLOWED_LOCATIONS = ('s3://company-data/customers/');
+
+s3://demo-customer-test03w/customer.csv
+
+Step 5: Get Snowflake IAM User Details
+DESC INTEGRATION S3_INT;
+
+Step 6: Configure AWS IAM Role
+
+Create IAM Role
+Add Trust Relationship using:
+STORAGE_AWS_IAM_USER_ARN
+STORAGE_AWS_EXTERNAL_ID
+
+Step 7: Create External Stage
+CREATE OR REPLACE STAGE CUSTOMER_S3_STAGE
+URL='s3://company-data/customers/'
+STORAGE_INTEGRATION = S3_INT
+FILE_FORMAT = CSV_FORMAT;
+
+Step 8: Verify Files
+LIST @CUSTOMER_S3_STAGE;
+
+Step 9: Load Data Using COPY INTO
+COPY INTO CUSTOMER_RAW
+FROM @CUSTOMER_S3_STAGE;

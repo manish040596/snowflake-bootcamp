@@ -1,0 +1,36 @@
+Load data from s3 to snowflake tables 
+
+
+step1 - snowflake tables 
+
+CREATE OR REPLACE TABLE CUSTOMER_RAW (
+    CUSTOMER_ID NUMBER,
+    CUSTOMER_NAME STRING,
+    EMAIL STRING,
+    CITY STRING
+);
+
+
+Step 2: Create File Format
+
+CREATE OR REPLACE FILE FORMAT CSV_FORMAT
+TYPE = CSV
+SKIP_HEADER = 1;
+
+Step 3: Create Stage Using AWS Access Key
+
+CREATE OR REPLACE STAGE CUSTOMER_S3_STAGE
+URL='s3://company-data/customers/'
+CREDENTIALS=(
+    AWS_KEY_ID='AKIAxxxxxxxxxxxx'
+    AWS_SECRET_KEY='xxxxxxxxxxxxxxxxxxxxxxxx'
+)
+FILE_FORMAT = CSV_FORMAT;
+
+
+LIST @CUSTOMER_S3_STAGE;
+
+s3://snowflake-practical073/
+
+
+-------------------------------------------------------------------------------

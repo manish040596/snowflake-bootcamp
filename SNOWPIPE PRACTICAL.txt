@@ -1,0 +1,92 @@
+SNOWPIPE PRACTICAL 
+
+
+Step 1: Create Target Table
+
+CREATE OR REPLACE TABLE CUSTOMER_NEW (
+    CUSTOMER_ID NUMBER,
+    CUSTOMER_NAME STRING,
+    CITY STRING
+);
+
+Step 2: Create File Format
+CREATE OR REPLACE FILE FORMAT CSV_FORMAT
+TYPE = CSV
+SKIP_HEADER = 1;
+
+
+Step 3: Create Storage Integration
+
+CREATE OR REPLACE STORAGE INTEGRATION S3_INT
+TYPE = EXTERNAL_STAGE
+STORAGE_PROVIDER = S3
+ENABLED = TRUE
+STORAGE_AWS_ROLE_ARN = 'arn:aws:iam::123456789012:role/snowflake_role'
+STORAGE_ALLOWED_LOCATIONS = ('s3://snowflake-demo/customers/');
+
+Step 4: Get Snowflake IAM Details
+
+DESC INTEGRATION S3_INT;
+
+Step 5: Configure AWS
+Create IAM Role
+
+Give permissions:
+Configure trust relationship using:
+
+STORAGE_AWS_IAM_USER_ARN
+STORAGE_AWS_EXTERNAL_ID
+
+Step 6: Create External Stage
+
+CREATE OR REPLACE STAGE CUSTOMER_STAGE
+URL='s3://snowflake-demo/customers/'
+STORAGE_INTEGRATION=S3_INT
+FILE_FORMAT=CSV_FORMAT;
+
+LIST @CUSTOMER_STAGE;
+
+Step 7: Create Snowpipe
+
+CREATE OR REPLACE PIPE CUSTOMER_PIPE
+AUTO_INGEST = TRUE
+AS
+COPY INTO CUSTOMER_RAW
+FROM @CUSTOMER_STAGE;
+
+Step 8: Get Notification Channel
+SHOW PIPES;
+
+DESC PIPE CUSTOMER_PIPE;
+
+Step 9: Configure S3 Event Notification
+
+In AWS S3:
+
+Properties → Event Notifications
+
+Create event:
+
+Event Type:
+Object Created (PUT)
+
+Destination:
+SQS Queue
+
+Queue:
+Snowflake Notification Channel
+
+Now every file upload generates an event.
+
+Step 10: Upload File
+
+
+Verify Load History
+
+SELECT *
+FROM TABLE(
+ INFORMATION_SCHEMA.COPY_HISTORY(
+   TABLE_NAME=>'CUSTOMER_RAW',
+   START_TIME=>DATEADD('DAY',-1,CURRENT_TIMESTAMP())
+ )
+);

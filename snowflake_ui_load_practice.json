@@ -1,0 +1,162 @@
+[
+  {
+    "emp_id": 1,
+    "emp_name": "Employee_1",
+    "department": "Marketing",
+    "salary": 103485,
+    "location": "Bangalore",
+    "is_active": false
+  },
+  {
+    "emp_id": 2,
+    "emp_name": "Employee_2",
+    "department": "Marketing",
+    "salary": 43703,
+    "location": "Pune",
+    "is_active": false
+  },
+  {
+    "emp_id": 3,
+    "emp_name": "Employee_3",
+    "department": "HR",
+    "salary": 88941,
+    "location": "Delhi",
+    "is_active": true
+  },
+  {
+    "emp_id": 4,
+    "emp_name": "Employee_4",
+    "department": "Marketing",
+    "salary": 61610,
+    "location": "Delhi",
+    "is_active": true
+  },
+  {
+    "emp_id": 5,
+    "emp_name": "Employee_5",
+    "department": "IT",
+    "salary": 110361,
+    "location": "Delhi",
+    "is_active": true
+  },
+  {
+    "emp_id": 6,
+    "emp_name": "Employee_6",
+    "department": "IT",
+    "salary": 64291,
+    "location": "Mumbai",
+    "is_active": true
+  },
+  {
+    "emp_id": 7,
+    "emp_name": "Employee_7",
+    "department": "IT",
+    "salary": 90604,
+    "location": "Mumbai",
+    "is_active": false
+  },
+  {
+    "emp_id": 8,
+    "emp_name": "Employee_8",
+    "department": "IT",
+    "salary": 53752,
+    "location": "Delhi",
+    "is_active": true
+  },
+  {
+    "emp_id": 9,
+    "emp_name": "Employee_9",
+    "department": "Sales",
+    "salary": 101558,
+    "location": "Mumbai",
+    "is_active": true
+  },
+  {
+    "emp_id": 10,
+    "emp_name": "Employee_10",
+    "department": "Sales",
+    "salary": 91087,
+    "location": "Bangalore",
+    "is_active": true
+  },
+  {
+    "emp_id": 11,
+    "emp_name": "Employee_11",
+    "department": "Sales",
+    "salary": 113764,
+    "location": "Bangalore",
+    "is_active": true
+  },
+  {
+    "emp_id": 12,
+    "emp_name": "Employee_12",
+    "department": "IT",
+    "salary": 56080,
+    "location": "Mumbai",
+    "is_active": true
+  },
+  {
+    "emp_id": 13,
+    "emp_name": "Employee_13",
+    "department": "Marketing",
+    "salary": 41096,
+    "location": "Bangalore",
+    "is_active": true
+  },
+  {
+    "emp_id": 14,
+    "emp_name": "Employee_14",
+    "department": "HR",
+    "salary": 118877,
+    "location": "Mumbai",
+    "is_active": true
+  },
+  {
+    "emp_id": 15,
+    "emp_name": "Employee_15",
+    "department": "Marketing",
+    "salary": 119379,
+    "location": "Pune",
+    "is_active": true
+  },
+  {
+    "emp_id": 16,
+    "emp_name": "Employee_16",
+    "department": "HR",
+    "salary": 75592,
+    "location": "Bangalore",
+    "is_active": true
+  },
+  {
+    "emp_id": 17,
+    "emp_name": "Employee_17",
+    "department": "Marketing",
+    "salary": 94165,
+    "location": "Delhi",
+    "is_active": true
+  },
+  {
+    "emp_id": 18,
+    "emp_name": "Employee_18",
+    "department": "Sales",
+    "salary": 112409,
+    "location": "Bangalore",
+    "is_active": true
+  },
+  {
+    "emp_id": 19,
+    "emp_name": "Employee_19",
+    "department": "Sales",
+    "salary": 42247,
+    "location": "Pune",
+    "is_active": true
+  },
+  {
+    "emp_id": 20,
+    "emp_name": "Employee_20",
+    "department": "Finance",
+    "salary": 82824,
+    "location": "Pune",
+    "is_active": true
+  }
+]
