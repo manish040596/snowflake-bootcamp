@@ -1,0 +1,15 @@
+create database practical_new
+clone PRACTICAL
+
+-- INTERNAL STAGE 
+-- EXTERNAL TABLE 
+
+SHOW TABLES; 
+
+CREATE TABLE CUSTOMER_CLONE CLONE CUSTOMERS;
+
+SELECT * FROM CUSTOMERS;
+SELECT * FROM CUSTOMER_CLONE;
+
+insert into customers values(104,'abc','def')
+
